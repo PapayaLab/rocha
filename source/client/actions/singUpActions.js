@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
 //import { SING_UP, SING_OUT } from './types';
 
 const baseUrl = 'http://localhost:3000';
@@ -28,17 +29,15 @@ export const requestSingUp = name => ({
 });
 
 export const RECEIVE_SINGUP = 'RECEIVE_SINGUP';
-export const receiveSingUp = (name, response) => ({
+export const receiveSingUp = form => ({
   type: RECEIVE_SINGUP,
-  name,
+  form,
   message: 'se recivio el singup',
-  response,
 });
 
 export const singUp = (form) => {
   return (dispatch) => {
-    dispatch(requestSingUp(form[0]));
-
+    dispatch(requestSingUp(form));
     return fetch(`${baseUrl}/api/users`, {
       method: 'POST',
       headers: {
@@ -48,11 +47,15 @@ export const singUp = (form) => {
       body: JSON.stringify({ form }),
     })
       .then(
-        response => response.text(),
+        response => response.json(),
         error => console.log('Salto Error Papiu.', error),
       )
-      .then(json =>
-        dispatch(receiveSingUp(form[0], json)),
-      );
+      .then((json) => {
+        if (json.success) {
+          dispatch(push('/dashboard'));
+        } else {
+          dispatch(receiveSingUp(form));
+        }
+      });
   };
 };

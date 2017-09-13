@@ -3,8 +3,14 @@ import express from 'express';
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  console.log(req.body);
-  res.json({ server: 'Todo bien desde el server' });
+  setTimeout(() => {
+    console.log(req.body);
+    if (req.body.form[0] === 'pipiyo') {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  }, 3000);
 });
 
 export default router;

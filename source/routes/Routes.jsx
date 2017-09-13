@@ -1,26 +1,33 @@
 import React from 'react';
 import {
   Route,
-  Switch,
 } from 'react-router-dom';
 
+import ConnectedSwitch from './ConnectedSwitch';
 import Home from './home/Home';
-import Login from './login/Login';
+import Dashboard from './dashboard';
+import Login from './login';
 
 
 function Routes() {
   return (
     <main role="application">
-      <Switch>
+      <ConnectedSwitch>
         {/* Login */}
         <Route
           path="/"
           exact
           component={Login}
         />
+        {/* Login */}
+        <Route
+          path="/dashboard"
+          exact
+          component={Dashboard}
+        />
         {/* Error 404 */}
         <Route component={Home} />
-      </Switch>
+      </ConnectedSwitch>
     </main>
   );
 }

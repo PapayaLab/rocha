@@ -1,15 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import css from './LoginForm.css';
+import s from './LoginForm.css';
 
-const LoginForm = ({ onClick }) => (
+//console.log(s[0][1]);
+
+const LoginForm = props => (
   <form onSubmit={(e) => {
     e.preventDefault();
-    onClick([e.target.elements[0].value, e.target.elements[1].value]);
+    props.onClick([e.target.elements[0].value, e.target.elements[1].value]);
   }}
   >
-    <h1 className={css.titulo}>Login</h1>
+    {console.log(props)}
+    {props.loading && <h1>loading</h1>}
+    <h1 className={s.titulo}>Login</h1>
     <input
       type="text"
     />
@@ -22,9 +25,5 @@ const LoginForm = ({ onClick }) => (
       >Login</button></div>
   </form>
 );
-
-LoginForm.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default LoginForm;

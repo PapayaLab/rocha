@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -10,7 +11,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+        ],
+      },
+      {
         test: /\.json$/,
+        exclude: /(node_modules)/,
         use: 'json-loader',
       },
       {
@@ -29,28 +46,15 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
     ],
   },
   target: 'web',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BROWSER': true,
+    }),
+  ],
 };
