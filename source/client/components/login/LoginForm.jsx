@@ -1,9 +1,5 @@
 import React from 'react';
 
-import s from './LoginForm.css';
-
-//console.log(s[0][1]);
-
 const LoginForm = props => (
   <form onSubmit={(e) => {
     e.preventDefault();

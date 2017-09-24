@@ -1,0 +1,26 @@
+*{
+  box-sizing: border-box;
+}
+body{
+   font-family: $fontAmble;
+   line-height: 1.6em;
+   height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+   line-height: 1.2em;
+   font-family: $fontAmble;
+}
+
+p {
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
+}
+
+a {
+    color: $color_corporativo_light;
+    @include active-state {
+        text-decoration: none;
+        color: $gris;
+    }
+}

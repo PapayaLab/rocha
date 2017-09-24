@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /(node_modules)/,
         use: [
           'style-loader',
@@ -23,27 +23,22 @@ module.exports = {
               localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [
+                path.resolve(__dirname, '../public')
+            ],
+              sourceMap: true
+            }
+          }
         ],
       },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?name=[path][name].[ext]limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?name=[path][name].[ext]" },
       {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        use: 'url-loader?prefix=font/&limit=5000'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=image/svg+xml'
-      },
-      {
-        test: /\.jpg$/,
-        loader: "file?name=[path][name].[ext]"
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loader: "file-loader?name=[path][name].[ext]"
       },
       {
         test: /\.json$/,
