@@ -7,9 +7,6 @@ import Nav from '../nav/Nav.jsx';
 import Home from './home/Home.jsx';
 import FormTomaDeInformacion from './comercial/form_toma_de_informacion/FormTomaDeInformacion.jsx';
 
-/* Style */
-import HeaderComponent from '../../client/components/header/HeaderComponent.jsx';
-
 const Dashboard = props => (
   	<main>
   		<Header />
