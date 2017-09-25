@@ -33,6 +33,78 @@ const HomeComponent = props => (
 			</div>
 		</div>
 
+		<div className={DashBoardStyle.module_form}>
+            <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
+                <h4>Nuevo cliente</h4>
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Rut</label>
+                <input required  type="text"  />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Nombre</label>
+                <select required id="formato">
+                <option value="">Seleccioné</option>
+                <option value="cu">CU</option>
+                <option value="tira">Tira</option>
+                <option value="placa">Placa</option>
+                <option value="empaque">Empaque</option>
+                <option value="un">UN</option>
+                <option value="ml">ML</option>
+                <option value="lamina">Lamina</option>
+              </select>
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Razón social</label>
+                <input required type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Giro</label>
+                <input required  type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Dirección</label>
+                <input required type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Contacto</label>
+                <input type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Forma de pago</label>
+                <input type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Telefono 1</label>
+                <input type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Telefono 2</label>
+                <input type="text" />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+                <label>Mail</label>
+                <input type="text" />
+            </div>
+
+          </div>
+
+          <div className={`${DashBoardStyle.module_form} ${DashBoardStyle.button}`}>
+            <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.button}`}>
+                <input type="submit" value="Enviar"/>
+            </div>
+          </div> 
+
     </div>
 );
 
