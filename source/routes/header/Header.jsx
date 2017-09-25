@@ -1,13 +1,13 @@
 import React, { PropTypes, Component } from 'react';
 
 /* Components */
-import HeaderComponentfrom from '../../client/components/header/HeaderComponent.jsx';
+import HeaderComponent from '../../client/components/header/HeaderComponent.jsx';
 
 class Header extends Component {
 
   render() {
     return (
-      <HeaderComponentfrom />
+      <HeaderComponent />
     );
   }
 }

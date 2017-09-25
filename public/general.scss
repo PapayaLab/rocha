@@ -6,6 +6,11 @@ body{
    line-height: 1.6em;
    height: 100%;
 }
+main{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
 h1,h2,h3,h4,h5,h6{
    line-height: 1.2em;

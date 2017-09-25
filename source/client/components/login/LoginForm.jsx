@@ -8,7 +8,7 @@ const LoginForm = props => (
   >
     {console.log(props)}
     {props.loading && <h1>loading</h1>}
-    <h1 className={s.titulo}>Login</h1>
+    <h1>Login</h1>
     <input
       type="text"
     />

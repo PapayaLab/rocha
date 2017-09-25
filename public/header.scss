@@ -1,15 +1,20 @@
 @import './main';
 
 .header{
+	position: fixed;
+	z-index: 2;
+	top:0;
+	background: $blanco;
 	display: flex;
+	width: 100%;
 	align-items: center;
 	flex-wrap: wrap;
 	box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
 	a{
-		color: $gris_darker;
+		color: $color_corporativo_regular;
 		@include active-state {
         	text-decoration: none;
-        	color: $gris;
+        	color: $color_corporativo_light;
     	}
 	}
 	.logo{
@@ -50,7 +55,7 @@
 	        position: absolute;
 	        right: 31px;
 	        top: 5px;
-	        color: $gris;
+	        color: $color_corporativo_light;
         }
         @include tablet-only{
 			width: 200px;
@@ -85,7 +90,7 @@
 						left: 10px;
 						top: -16px;
 						position: absolute;
-						background: $color_error;
+						background: $error;
 						font-size: $fontTiny;
 						color: $blanco;
 					}
@@ -117,7 +122,7 @@
 			text-decoration: none;
 			@include active-state {
 				text-decoration: underline;
-				color: $gris_darker;
+				color: $color_corporativo_regular;
 			}
 		}
 		.user_text{
@@ -129,7 +134,7 @@
 				margin: 0;
 				padding: 0;
 				font-size: $fontSmall;
-				color: $gris_darker;
+				color: $color_corporativo_regular;
 			}
 		}
 		.user_img{

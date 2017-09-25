@@ -91,16 +91,18 @@ $tipos : (
     humongous : $fontHumongous
 );
 
-$ok : #D8F6CE;
-$error : #F6CECE;
+$ok : #80FF00;
+$error : #DC3522;
+$midle : #F7D358;
 
 /* -> genero un mapa de tamanos <- */
 $color_corporativo_darker : #2F3740;
 $color_corporativo_dark : #34404e; 
-$color_corporativo_regular : #63707f; 
-$color_corporativo_light : #535f6c;
+$color_corporativo_regular : #1a2e35; 
+$color_corporativo_light : #2b4550;
 $color_corporativo_lighter : #f5f8fb; 
 $color_corporativo_lightest : #f5f8fb;
+
 $color_secundario_regular : #FFD34E; 
 $color_secundario_light: #FAD977;
 
@@ -122,9 +124,6 @@ $color_sistema : #FF9311;
 $color_desarrollo : #D64700;
 $color_actividad : #CC1E2C;
 $color_planificacion : #6ABFAF;
-
-$color_valido : #8FB259;
-$color_error : #DC3522;
 
 $negro : #000;
 $gris_darker : #333;
@@ -273,7 +272,7 @@ $medias : (
 }
 
 @mixin active-state {
-    &:active, &:hover, .no-touch &:active, .touch &:active, .touch &:hover {
+    &:active, &:hover{
         @content;
     }
 }
