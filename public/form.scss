@@ -35,14 +35,12 @@
         padding: .5em .3em;
         width: 100%;
         background-color: $blanco;
-        &.date{
-            background-image: url(./image/calendar.png);
+        &.module_form_date{
+            //background-image: url(./image/calendar.png);
+            background-image: url(./../public/image/calendar.png);
             background-repeat: no-repeat;
             background-size: 15px 15px;
             background-position: 98% center;
-        }
-        @include active-state{
-            border: solid 1px $ok;
         }
         &:required{
             border:solid 1px $gris; 
@@ -51,7 +49,10 @@
         &:invalid{
             border:solid 1px $gris;
             box-shadow:none; 
-        }    
+        } 
+        @include active-state{
+            border: solid 1px $ok;
+        }   
     }
     input[type="checkbox"]:checked{
         + .checkbox{

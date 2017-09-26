@@ -69,7 +69,7 @@ const HomeComponent = props => (
 
             <div className={DashBoardStyle.item_form}>
                 <label>Dirección</label>
-                <input required type="text" />
+                <input type="text" />
             </div>
 
             <div className={DashBoardStyle.item_form}>
@@ -89,7 +89,7 @@ const HomeComponent = props => (
 
             <div className={DashBoardStyle.item_form}>
                 <label>Telefono 2</label>
-                <input type="text" />
+                <input className={DashBoardStyle.module_form_date} type="text" />
             </div>
 
             <div className={DashBoardStyle.item_form}>
@@ -103,8 +103,40 @@ const HomeComponent = props => (
             <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.button}`}>
                 <input type="submit" value="Enviar"/>
             </div>
-          </div> 
+          </div>
 
+          <div className={DashBoardStyle.module_table_new}>
+	          <table className={DashBoardStyle.table_normal}>
+	              <thead>
+	                <tr>
+	                  <th>Herramientas</th>
+	                  <th>Proveedor</th>
+	                  <th>Rut</th>
+	                  <th>Dirección</th>
+	                  <th>Comuna</th>
+	                  <th>Telefono</th>
+	                  <th>Forma de pago</th>
+	                  <th>Razón social</th>
+	                  <th>Mail</th>
+	                  <th>Forma de pago</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <tr>
+			            <td>Dato 01</td>
+			            <td>Dato 02</td>
+			            <td>Dato 01</td>
+			            <td>Dato 02</td>
+                        <td>Dato 02</td>
+			            <td className="nr">Dato</td>
+			            <td>Dato 01</td>
+			            <td>Dato 02</td>
+			            <td>Dato 01</td>
+			            <td>Dato 02</td>
+	        		</tr>  
+	            	</tbody>
+	            </table> 
+            </div>
     </div>
 );
 

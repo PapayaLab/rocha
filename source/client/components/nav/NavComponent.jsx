@@ -23,16 +23,17 @@ const NavComponent = props => (
   					<ul>
   						<li><span>Título</span></li>
   						<li><a href="#">Toma de información</a></li>
-  						<li><a href="#">Listado Toma de Información</a></li>
-  						<li><a href="#">Toma de información</a></li>
-  						<li><a href="#">Listado Toma de Información</a></li>
+  						<li><a href="#">Mueble Especial</a></li>
+              <li><a href="#">Listado Toma de Información</a></li>
+  						<li><a href="#">Listado Cotización</a></li>
+  						<li><a href="#">Cuadro Proyecto</a></li>
   					</ul>
   				</li>
   				<li className={`${NavStyle.nav_items_active}`}>
   					<p className={`${NavStyle.icon_dam}`}>Dam</p>
   					<ul>
-  						<li><a href="#">Toma de información</a></li>
-  						<li><a href="#">Listado Toma de Información</a></li>
+  						<li><a href="#">Listado Ti Plano</a></li>
+  						<li><a href="#">Listado Cotización</a></li>
   					</ul>
   				</li>
   				<li>

@@ -1,0 +1,173 @@
+@mixin tableIcon($background,$color){
+    thead{th{background:$background;color:$color;}}
+} 
+
+.module_table_new{
+    margin: 1em auto 1em auto;
+    overflow: auto; 
+    border-radius: 10px;
+    width: calc(100% - 1em);
+    table{
+        border-radius: 10px;
+        border-collapse: separate;
+        width: 100%;
+        min-width: 100%;
+        border-spacing:0;
+        border:1px solid rgba(34,36,38,.15);
+        font-size: $fontTiny;
+        &.table_normal{@include tableIcon($color_planificacion,$blanco);}
+        thead{
+            border-radius: 10px 10px 0 0;
+            th{
+                background-color: rgb(249, 250, 251);
+                &:first-child{
+                   border-radius: 10px 0 0 0;
+                }
+                &:last-child{
+                    border-radius: 0 10px 0 0;
+                }
+            }
+        }
+        tbody{
+            tr{
+                &:nth-child(odd){
+                    background: rgb(244, 246, 247);
+                }
+                &:nth-child(event){
+                    background: rgb(255, 255, 255);
+                }
+                &.module_table_error{
+                    background: #fff6f6;
+                    color : #9f3a38;
+                }
+                &.module_table_ok{
+                    background: #fcfff5;
+                    color : #2c662d;
+                }
+                &:last-child{
+                    td{
+                        &:first-child{
+                           border-radius: 0 0 0 10px;
+                        }
+                        &:last-child{
+                            border-radius: 0 0 10px 0;
+                        }
+                    }
+                }
+            }
+        }
+        td, th{
+            padding: 10px 7px;
+            position: relative;
+            &.module_table_nr{
+                white-space: nowrap;
+            }
+            &.module_table_right{
+                text-align: right;
+            }
+            &.module_table_center{
+                text-align: center;
+            }
+            &.module_table_error{
+                background: #FA5858;
+                color : #fff;
+            }
+            &.module_table_ok{
+                background: #58ACFA;
+                color : #fff;
+            }
+            a{
+                text-decoration: none;
+                padding: 0 3px;
+            }
+            select{
+                @include reset-appearance;
+                position:relative;
+                padding: 5px;
+                width: 100%;
+                border:solid 1px $gris;
+                background-image: url(./image/down-arrow.svg);
+                background-repeat: no-repeat;
+                background-size: 15px 15px;
+                background-position: 98% center;
+            }
+            input{
+                @include reset-appearance;
+                width: 100%;
+                &.module_table_active{
+                    border:solid 1px $gris;
+                }
+                &.module_table_small{
+                    width: 50px;
+                }
+                &.module_table_medium{
+                    width: 90px;
+                }
+                &.module_table_big{
+                    width: 100%;
+                }
+                &.module_table_date{
+                    background-image: url(./image/calendar.svg);
+                    background-repeat: no-repeat;
+                    background-size: 10px 10px;
+                    background-position: 98% center;
+                }
+            }
+            input[type="checkbox"]:checked{
+                + .checkbox{
+                    width: 28px;
+                    height: 28px;
+                    border: solid 1px $ok;
+                    &:before{
+                        content: "\f00c";
+                        font-family: FontAwesome;
+                        color: $ok;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 2px;
+                        left: 7px;
+                    }
+                }
+            }
+            input[type="checkbox"]{
+                display: none;
+                + .checkbox{
+                    position: relative;
+                    background: $blanco;
+                    width: 28px;
+                    height: 28px;
+                    border: solid 1px $gris;
+                }
+            }
+            .module_table_opc{
+                .module_table_cr_title{
+                    margin-top: .3em;
+                    margin-bottom: .1em;
+                }
+                .module_table_name_check,.module_table_name_radio{
+                    margin-top: .8em;
+                    float: left;
+                    margin-right: 10px;
+                }
+                .module_table_checkbox,.module_table_radio{
+                    margin-top: .3em;
+                    float: left;
+                    margin-right: 20px;
+                }
+            }
+        }
+        td{
+            border-top:1px solid rgba(34,36,38,.15);
+            + td{  
+                border-left:1px solid rgba(34,36,38,.15);
+            }
+        }
+        th{
+            + th{
+                border-left:1px solid rgba(34,36,38,.15);
+    
+            }
+        }
+    }
+}
