@@ -21,8 +21,7 @@ const NavComponent = props => (
   				<li className={`${NavStyle.nav_items_active}`}>
   					<p className={NavStyle.icon_comercial}>Comercial</p>
   					<ul>
-  						<li><span>Título</span></li>
-  						<li><a href="#">Toma de información</a></li>
+  						<li><a href="#">Ingreso Toma de información</a></li>
   						<li><a href="#">Mueble Especial</a></li>
               <li><a href="#">Listado Toma de Información</a></li>
   						<li><a href="#">Listado Cotización</a></li>
@@ -32,18 +31,28 @@ const NavComponent = props => (
   				<li className={`${NavStyle.nav_items_active}`}>
   					<p className={`${NavStyle.icon_dam}`}>Dam</p>
   					<ul>
+              <li><a href="#">Ingreso Cotización</a></li>
   						<li><a href="#">Listado Ti Plano</a></li>
   						<li><a href="#">Listado Cotización</a></li>
   					</ul>
   				</li>
-  				<li>
+  				<li className={`${NavStyle.nav_items_active}`}>
   					<p className={NavStyle.icon_planificacion}>Planificación</p>
+            <ul>
+              <li><span>Bodegas</span></li>
+              <li><a href="#">Bodega Insumo</a></li>
+              <li><a href="#">Bodega Terminado</a></li>
+              <li><a href="#">Bodega Importado</a></li>
+            </ul>
   				</li>
   				<li>
   					<p className={NavStyle.icon_pruduccion}>Producción</p>
   				</li>
-  				<li>
+  				<li className={`${NavStyle.nav_items_active}`}>
   					<p className={NavStyle.icon_sillas}>Sillas</p>
+            <ul>
+              <li><a href="#">Bodega Sillas</a></li>
+            </ul>
   				</li>
   				<li>
   					<p className={NavStyle.icon_despacho}>Despacho</p>

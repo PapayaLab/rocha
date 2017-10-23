@@ -83,29 +83,19 @@
             select{
                 @include reset-appearance;
                 position:relative;
-                padding: 5px;
+                padding: 3px;
                 width: 100%;
                 border:solid 1px $gris;
-                background-image: url(./image/down-arrow.svg);
+                background-image: url(./image/down-arrow.png);
                 background-repeat: no-repeat;
-                background-size: 15px 15px;
+                background-size: 12px 12px;
                 background-position: 98% center;
             }
             input{
                 @include reset-appearance;
                 width: 100%;
-                &.module_table_active{
-                    border:solid 1px $gris;
-                }
-                &.module_table_small{
-                    width: 50px;
-                }
-                &.module_table_medium{
-                    width: 90px;
-                }
-                &.module_table_big{
-                    width: 100%;
-                }
+                border:solid 1px $gris;
+                padding: 2px;
                 &.module_table_date{
                     background-image: url(./image/calendar.svg);
                     background-repeat: no-repeat;
@@ -159,6 +149,9 @@
         }
         td{
             border-top:1px solid rgba(34,36,38,.15);
+            &.td50{min-width:50px;}
+            &.td200{min-width:200px;}
+            &.td300{min-width:300px;}
             + td{  
                 border-left:1px solid rgba(34,36,38,.15);
             }
@@ -170,4 +163,33 @@
             }
         }
     }
+}
+
+.module_add_row{
+    text-align: right;
+    margin: 1em auto 1em auto;
+    overflow: auto; 
+    width: calc(100% - 1em);
+    label{
+        margin: 0 1em;
+    }
+    input{
+        @include reset-appearance;
+        width: 50px;
+        border:solid 1px $gris;
+        padding: 2px;
+        margin: 0 1em;
+    }
+    button{
+        @include reset-appearance;
+        background: $color_corporativo_regular;
+        color: $blanco;
+        padding: .2em .4em;
+        border-radius: 5px;
+        @include active-state{
+            background: $color_corporativo_light;
+            cursor: pointer;
+        } 
+    }
+
 }
