@@ -4,10 +4,10 @@ import { Route, Link, Switch} from 'react-router-dom';
 /* Style */
 import DashBoardStyle from '../../../../../../public/dashboard.scss';
 
-const SaveCotizacionComponent = props => (
+const UpdateCotizacionComponent = props => (
   	<div className={DashBoardStyle.main}>
         <div className={DashBoardStyle.title}>
-            <h3>Ingreso cotización</h3>
+            <h3>Actualización cotización</h3>
         </div>
 
         <div className={DashBoardStyle.module_form}>
@@ -261,4 +261,4 @@ const SaveCotizacionComponent = props => (
     </div>
 );
 
-export default SaveCotizacionComponent;
+export default UpdateCotizacionComponent;
