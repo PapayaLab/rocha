@@ -88,6 +88,15 @@ const SaveClienteComponent = () => (
         <label htmlFor="director">Director Proyecto</label>
         <input required type="number" id="director" name="director" />
       </div>
+
+      <div className={DashBoardStyle.item_form}>
+        <label htmlFor="clienteActivo">Cliente Activo</label>
+        <select required id="clienteActivo" name="clienteActivo">
+          <option value="">Seleccioné</option>
+          <option value="1">Si</option>
+          <option value="0">No</option>
+        </select>
+      </div>
     </div>
 
     <div className={DashBoardStyle.module_add_row}>
