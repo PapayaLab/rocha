@@ -6,7 +6,9 @@ import Header from '../header/Header.jsx';
 import Nav from '../nav/Nav.jsx';
 import Home from './home/Home.jsx';
 
+/* Cliente */
 import SaveTomaDeInformacion from './comercial/save_toma_de_informacion/SaveTomaDeInformacion.jsx';
+import SaveCliente from './comercial/save_cliente/SaveCliente.jsx';
 
 /* Dam */
 import SaveCotizacion from './dam/save_cotizacion/SaveCotizacion.jsx';
@@ -18,6 +20,7 @@ const Dashboard = props => (
   		<Header />
   		<Nav />
   		<Route exact path={props.match.path} component={Home} />
+        <Route path={`${props.match.path}/SaveCliente`} component={SaveCliente} />
       	<Route path={`${props.match.path}/SaveTomaDeInformacion`} component={SaveTomaDeInformacion} />
       	<Route path={`${props.match.path}/SaveCotizacion`} component={SaveCotizacion} />
       	<Route path={`${props.match.path}/ListCotizacion`} component={ListCotizacion} />
