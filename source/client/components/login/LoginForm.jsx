@@ -6,9 +6,10 @@ const LoginForm = props => (
     props.onClick([e.target.elements[0].value, e.target.elements[1].value]);
   }}
   >
-    {console.log(props)}
     {props.loading && <h1>loading</h1>}
+
     <h1>Login</h1>
+
     <input
       type="text"
     />
