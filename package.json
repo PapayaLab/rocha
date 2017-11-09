@@ -4,7 +4,7 @@
   "description": "Rocha sistema Node/React/Mongo",
   "main": "server.js",
   "scripts": {
-    "watch": "rimraf ./built/* && webpack -w --config ./tools/webpack.config.js",
+    "build": "rimraf ./built/* && webpack -w --config ./tools/webpack.config.js",
     "start": "nodemon ./built/server/index.js"
   },
   "author": "PapayaLabs",
@@ -14,6 +14,7 @@
     "express": "^4.15.4",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
