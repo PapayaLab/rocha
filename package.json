@@ -4,7 +4,7 @@
   "description": "Rocha sistema Node/React/Mongo",
   "main": "server.js",
   "scripts": {
-    "watch": "rimraf ./built/* && webpack -w --config ./tools/webpack.config.js",
+    "build": "rimraf ./built/* && webpack -w --config ./tools/webpack.config.js",
     "start": "nodemon ./built/server/index.js"
   },
   "author": "PapayaLabs",
@@ -14,6 +14,7 @@
     "express": "^4.15.4",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -37,10 +38,14 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.2.1",
+    "file-loader": "^0.11.2",
     "isomorphic-style-loader": "^4.0.0",
     "json-loader": "^0.5.7",
+    "node-sass": "^4.5.3",
     "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack": "^3.5.4"
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Route,
+  Switch
 } from 'react-router-dom';
 
 import ConnectedSwitch from './ConnectedSwitch';
@@ -22,7 +23,6 @@ function Routes() {
         {/* Login */}
         <Route
           path="/dashboard"
-          exact
           component={Dashboard}
         />
         {/* Error 404 */}
