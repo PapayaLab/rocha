@@ -59,7 +59,7 @@ app.get('*', async (req, res, next) => {
   }
 });
 
-mongoose.connect('mongodb://localhost:27017/portfolio', { useMongoClient: true }, (err) => {
+mongoose.connect('mongodb://localhost:27017/rocha', { useMongoClient: true }, (err) => {
   if (err) {
     return console.log(`Error al conectar a la base de datos: ${err}`);
   }
