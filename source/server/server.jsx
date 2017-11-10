@@ -1,6 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+/* BD */
+import mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
+
 /* SSR */
 import React from 'react';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
@@ -9,6 +13,8 @@ import { Provider } from 'react-redux';
 
 /* Api Express */
 import users from './routes/users';
+import client from './routes/client';
+
 
 /* Components */
 import store from '../client/store/store';
@@ -22,6 +28,8 @@ app.use(bodyParser.json());
 
 /* Middlewares */
 app.use('/api/users', users);
+app.use('/api/client', client);
+
 
 app.get('*', async (req, res, next) => {
   try {
@@ -51,8 +59,13 @@ app.get('*', async (req, res, next) => {
   }
 });
 
-const server = app.listen(3000, () => {
-  const { address, port } = server.address();
-
-  console.log(`Open server on address: ${address} and port: ${port}`);
+mongoose.connect('mongodb://localhost:27017/portfolio', { useMongoClient: true }, (err) => {
+  if (err) {
+    return console.log(`Error al conectar a la base de datos: ${err}`);
+  }
+  const server = app.listen(3000, () => {
+    const { address, port } = server.address();
+    console.log(`Open server on address: ${address} and port: ${port}`);
+  });
+  return console.log('connect BD');
 });

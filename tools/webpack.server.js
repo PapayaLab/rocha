@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -69,6 +70,7 @@ module.exports = {
     ],
   },
   target: 'node',
+  externals: [nodeExternals()],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
