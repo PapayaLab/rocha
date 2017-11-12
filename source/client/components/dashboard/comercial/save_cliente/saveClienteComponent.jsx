@@ -8,15 +8,54 @@ class SaveClienteComponent extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    this.handleAddContact = this.handleAddContact.bind(this);
+    this.handleRemoveContact = this.handleRemoveContact.bind(this);
+    this.changeContact = this.changeContact.bind(this);
 
+    this.nodesContactNombre = new Map();
+    this.nodesContactApellido = new Map();
+    this.nodesContactMail = new Map();
+    this.nodesContactTelefono = new Map();
+  }
   async handleSubmit(event) {
     event.preventDefault();
+    const contacto = [];
+    let obj;
+    const contactoNombre = Array.from(this.nodesContactNombre.values());
+    const contactoApellido = Array.from(this.nodesContactApellido.values());
+    const contactoMail = Array.from(this.nodesContactMail.values());
+    const contactoTelefono = Array.from(this.nodesContactTelefono.values());
+
+    contactoNombre.map((text, i) => {
+      obj = {
+        nombre: text.value,
+        apellido: contactoApellido[i].value,
+        mail: contactoMail[i].value,
+        telefono: contactoTelefono[i].value,
+      };
+      contacto.push(obj);
+    });
+
     const client = {
       rut_cliente: this.rutInput.value,
       cliente: this.clienteInput.value,
+      contacto: contacto,
     };
+
     await this.props.actions.saveClient(client);
+  }
+
+  handleAddContact(event) {
+    event.preventDefault();
+    this.props.actions.addContact();
+  }
+
+  handleRemoveContact(event) {
+    event.preventDefault();
+    this.props.actions.removeContact();
+  }
+  changeContact(e) {
+    this.props.actions.changeContact(e.target.value);
   }
 
   render() {
@@ -129,36 +168,36 @@ class SaveClienteComponent extends Component {
 
           <div className={DashBoardStyle.module_add_row}>
             <label htmlFor="btnRow"> Cantidad Contactos: </label>
-            <button> - </button>
-            <input type="number" id="btnRow" />
-            <button> + </button>
+            <button onClick={this.handleRemoveContact}> - </button>
+            <input type="number" id="btnRow" value = {this.props.contacto} onChange = {this.changeContact} />
+            <button onClick={this.handleAddContact}> + </button>
           </div>
           {
           _.times( this.props.contacto, (i) => {
             return (
-                <div key={i} className={DashBoardStyle.module_form}>
+                <div key={i} className={DashBoardStyle.module_form} >
                   <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
                     <h4>Contacto Cliente</h4>
                   </div>
 
                   <div className={DashBoardStyle.item_form}>
                     <label htmlFor="nombreContacto">Nombre Contacto</label>
-                    <input type="text" id="nombreContacto" name="nombreContacto" />
+                    <input type="text" id="nombreContacto" name="nombreContacto" ref={node => this.nodesContactNombre.set(i, node)} />
                   </div>
 
                   <div className={DashBoardStyle.item_form}>
                     <label htmlFor="apellidoContacto">Apellido Contacto</label>
-                    <input type="text" id="apellidoContacto" name="apellidoContacto" />
+                    <input type="text" id="apellidoContacto" name="apellidoContacto" ref={node => this.nodesContactApellido.set(i, node)} />
                   </div>
 
                   <div className={DashBoardStyle.item_form}>
                     <label htmlFor="mailContacto">Mail Contacto</label>
-                    <input type="text" id="mailContacto" name="mailContacto" />
+                    <input type="text" id="mailContacto" name="mailContacto" ref={node => this.nodesContactMail.set(i, node)} />
                   </div>
 
                   <div className={DashBoardStyle.item_form}>
                     <label htmlFor="telefonoContacto">Telefono Contacto</label>
-                    <input type="text" id="telefonoContacto" name="telefonoContacto" />
+                    <input type="text" id="telefonoContacto" name="telefonoContacto"ref={node => this.nodesContactTelefono.set(i, node)} />
                   </div>
                 </div>);
             })

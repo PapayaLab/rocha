@@ -14,7 +14,7 @@ function saveClient(req, res) {
   client.sucursal = req.body.sucursal;
   client.director_proyecto = req.body.director_proyecto;
   client.cliente_activo = req.body.cliente_activo;
-
+  client.contacto = req.body.contacto;
   client.save().then((clientStored) => {
     res.status(200).send({ client: clientStored });
   }, (err) => {

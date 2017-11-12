@@ -15,6 +15,7 @@ const ClientSchema = Schema({
   sucursal: String,
   director_proyecto: String,
   cliente_activo: String,
+  contacto: [{ nombre: String, apellido: String, mail: String, telefono: String }],
 });
 
 module.exports = mongoose.model('Client', ClientSchema);

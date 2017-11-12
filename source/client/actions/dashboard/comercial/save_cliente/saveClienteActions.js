@@ -1,5 +1,7 @@
 import {
   ADD_CONTACT,
+  REMOVE_CONTACT,
+  CHANGE_CONTACT,
   SAVE_CLIENTE_SUCCESS,
   SAVE_CLIENTE_FAILURE,
   SAVE_CLIENT_INIT,
@@ -7,10 +9,21 @@ import {
 import API from './api';
 
 /* Actions Creators */
-export function addContact(item) {
+export function addContact() {
   return {
     type: ADD_CONTACT,
-    payload: item,
+  };
+}
+
+export function removeContact() {
+  return {
+    type: REMOVE_CONTACT,
+  };
+}
+export function changeContact(number) {
+  return {
+    type: CHANGE_CONTACT,
+    payload: number,
   };
 }
 

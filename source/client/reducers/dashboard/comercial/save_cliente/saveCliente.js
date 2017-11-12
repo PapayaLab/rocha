@@ -4,6 +4,8 @@ import {
   SAVE_CLIENT_SUCCESS,
   SAVE_CLIENT_FAILURE,
   ADD_CONTACT,
+  REMOVE_CONTACT,
+  CHANGE_CONTACT,
 } from '../../../../actions/dashboard/comercial/save_cliente/types';
 
 export default function saveClientReducer(state = initialState, action) {
@@ -26,6 +28,16 @@ export default function saveClientReducer(state = initialState, action) {
     case ADD_CONTACT: {
       return Object.assign({}, state, {
         contacto: (state.contacto + 1),
+      });
+    }
+    case REMOVE_CONTACT: {
+      return Object.assign({}, state, {
+        contacto: (state.contacto - 1 > 0) ? (state.contacto - 1) : 1,
+      });
+    }
+    case CHANGE_CONTACT: {
+      return Object.assign({}, state, {
+        contacto: (action.payload > 0) ? action.payload : 1,
       });
     }
     default:
