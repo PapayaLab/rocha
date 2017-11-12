@@ -34,12 +34,32 @@ class SaveClienteComponent extends Component {
         telefono: contactoTelefono[i].value,
       };
       contacto.push(obj);
+      return contacto;
     });
 
     const client = {
       rut_cliente: this.rutInput.value,
       cliente: this.clienteInput.value,
-      contacto: contacto,
+      contacto,
+      razon_social: this.razonInput.value,
+      giro: this.giroInput.value,
+      rubro: this.rubroInput.value,
+      numero_empleado: this.empleadoInput.value,
+      tipo_cliente: this.tipoClienteInput.value,
+      mercado: this.mercadoInput.value,
+      empresa: this.empresaInput.value,
+      sucursal: this.sucursalInput.value,
+      director_proyecto: this.directorInput.value,
+      cliente_activo: this.activoInput.value,
+      facturacion_electronica: this.facturacionInput.value,
+      mail_facturacion: this.mailFacturacionInput.value,
+      forma_pago: this.formaPagoInput.value,
+      contacto_proveedores: this.contactoProveedoresInput.value,
+      telefono_proveedores: this.telefonoProveedoresInput.value,
+      mail_proveedores: this.mailProveedoresInput.value,
+      medio_pago: this.medioPagoInput.value,
+      direccion_pago: this.direccionPagoInput.value,
+      banco_cliente: this.bancoInput.value,
     };
 
     await this.props.actions.saveClient(client);
@@ -72,37 +92,37 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="rut">Rut Cliente</label>
-              <input type="text" id="rut" name="rut" ref={node => this.rutInput = node} />
+              <input type="text" required id="rut" name="rut" ref={node => this.rutInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="cliente">Cliente</label>
-              <input type="text" id="cliente" name="cliente" ref={node => this.clienteInput = node} />
+              <input type="text" required  id="cliente" name="cliente" ref={node => this.clienteInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="razon">Razón Social</label>
-              <input type="text" id="razon" name="razon" />
+              <input type="text" id="razon" name="razon" ref={node => this.razonInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="giro">Giro</label>
-              <input type="text" id="giro" name="giro" />
+              <input type="text" id="giro" name="giro" ref={node => this.giroInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="rubro">Rubro</label>
-              <input type="text" id="rubro" name="rubro" />
+              <input type="text" id="rubro" name="rubro" ref={node => this.rubroInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="numeroEmpleados">Número Empleados</label>
-              <input type="number" id="numeroEmpleados" name="numeroEmpleados" />
+              <input type="number" id="numeroEmpleados" name="numeroEmpleados" ref={node => this.empleadoInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="tipoCliente">Tipo Cliente</label>
-              <select id="tipoCliente" name="tipoCliente">
+              <select id="tipoCliente" name="tipoCliente" ref={node => this.tipoClienteInput = node}>
                 <option value="">Seleccioné</option>
                 {
                   this.props.tipoCliente.map((text, i) => {
@@ -114,7 +134,7 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="mercado">Mercado</label>
-              <select id="mercado" name="mercado">
+              <select id="mercado" name="mercado" ref={node => this.mercadoInput = node}>
                 <option value="">Seleccioné</option>              
                 {
                   this.props.mercado.map((text, i) => {
@@ -126,7 +146,7 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="empresa">Empresa</label>
-              <select id="empresa" name="empresa">
+              <select id="empresa" name="empresa" ref={node => this.empresaInput = node}>
                 <option value="">Seleccioné</option>
                 {
                   this.props.empresa.map((text, i) => {
@@ -138,7 +158,7 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="sucursal">Sucursal</label>
-              <select id="sucursal" name="sucursal">
+              <select id="sucursal" name="sucursal" ref={node => this.sucursalInput = node}>
                 <option value="">Seleccioné</option>
                 {
                   this.props.sucursal.map((text, i) => {
@@ -150,16 +170,16 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="director">Director Proyecto</label>
-              <input type="number" id="director" name="director" />
+              <input type="number" id="director" name="director" ref={node => this.directorInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="clienteActivo">Cliente Activo</label>
-              <select id="clienteActivo" name="clienteActivo">
+              <select id="clienteActivo" name="clienteActivo" ref={node => this.activoInput = node}>
                 <option value="">Seleccioné</option>
                 {
                   this.props.clienteActivo.map((text, i) => {
-                    return <option key={i} value={i}>{text}</option>
+                    return <option key={i} value={text}>{text}</option>
                   })
                 }
               </select>
@@ -210,17 +230,17 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="facturacion">Facturación electronica</label>
-              <input type="text" id="facturacion" name="facturacion" />
+              <input type="text" id="facturacion" name="facturacion" ref={node => this.facturacionInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
-              <label htmlFor="correoFacturacion">Correo Facturación</label>
-              <input type="text" id="correoFacturacion" name="correoFacturacion" />
+              <label htmlFor="correoFacturacion">Mail Facturación</label>
+              <input type="text" id="correoFacturacion" name="correoFacturacion" ref={node => this.mailFacturacionInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="FormaPago">Forma De Pago</label>
-              <select id="FormaPago" name="FormaPago">
+              <select id="FormaPago" name="FormaPago" ref={node => this.formaPagoInput = node}>
                 <option value="Seleccioné">Seleccioné</option>
                 {
                   this.props.condicionPago.map((text, i) => {
@@ -232,22 +252,22 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="contactoProveedores">Contacto Proveedores</label>
-              <input type="text" id="contactoProveedores" name="contactoProveedores" />
+              <input type="text" id="contactoProveedores" name="contactoProveedores" ref={node => this.contactoProveedoresInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="telefonoProveedores">Telefono Proveedores</label>
-              <input type="text" id="telefonoProveedores" name="telefonoProveedores" />
+              <input type="text" id="telefonoProveedores" name="telefonoProveedores" ref={node => this.telefonoProveedoresInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="mailProveedores">Mail Proveedores</label>
-              <input type="text" id="mailProveedores" name="mailProveedores" />
+              <input type="text" id="mailProveedores" name="mailProveedores" ref={node => this.mailProveedoresInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="medioPago">Medio de Pago</label>
-              <select id="medioPago" name="medioPago">
+              <select id="medioPago" name="medioPago" ref={node => this.medioPagoInput = node} >
                 <option value="Seleccioné">Seleccioné</option>
                 {
                   this.props.medioPago.map((text, i) => {
@@ -259,12 +279,12 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="direccionPago">Dirección Pago</label>
-              <input type="text" id="direccionPago" name="direccionPago" />
+              <input type="text" id="direccionPago" name="direccionPago" ref={node => this.direccionPagoInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="bancoCliente">Banco Cliente</label>
-              <select id="bancoCliente" name="bancoCliente">
+              <select id="bancoCliente" name="bancoCliente" ref={node => this.bancoInput = node} >
                 <option value="Seleccioné">Seleccioné</option>
                 {
                   this.props.banco.map((text, i) => {

@@ -16,6 +16,15 @@ const ClientSchema = Schema({
   director_proyecto: String,
   cliente_activo: String,
   contacto: [{ nombre: String, apellido: String, mail: String, telefono: String }],
+  facturacion_electronica: String,
+  mail_facturacion: String,
+  forma_pago: String,
+  contacto_proveedores: String,
+  telefono_proveedores: String,
+  mail_proveedores: String,
+  medio_pago: String,
+  direccion_pago: String,
+  banco_cliente: String,
 });
 
 module.exports = mongoose.model('Client', ClientSchema);

@@ -47,8 +47,8 @@ const initialState = {
     'Camino Lonquen',
   ],
   clienteActivo: [
-    '1',
-    '0',
+    'Si',
+    'No',
   ],
   contacto: 1,
   loading: false,

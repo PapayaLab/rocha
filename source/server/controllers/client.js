@@ -15,6 +15,16 @@ function saveClient(req, res) {
   client.director_proyecto = req.body.director_proyecto;
   client.cliente_activo = req.body.cliente_activo;
   client.contacto = req.body.contacto;
+  client.facturacion_electronica = req.body.facturacion_electronica;
+  client.mail_facturacion = req.body.mail_facturacion;
+  client.forma_pago = req.body.forma_pago;
+  client.contacto_proveedores = req.body.contacto_proveedores;
+  client.telefono_proveedores = req.body.telefono_proveedores;
+  client.mail_proveedores = req.body.mail_proveedores;
+  client.medio_pago = req.body.medio_pago;
+  client.direccion_pago = req.body.direccion_pago;
+  client.banco_cliente = req.body.banco_cliente;
+
   client.save().then((clientStored) => {
     res.status(200).send({ client: clientStored });
   }, (err) => {
