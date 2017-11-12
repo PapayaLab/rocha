@@ -20,13 +20,12 @@ export default function saveClientReducer(state = initialState, action) {
       });
     case SAVE_CLIENT_SUCCESS:
       return Object.assign({}, state, {
-        client: [...state.client, action.payload],
         loading: false,
         error: null,
       });
     case ADD_CONTACT: {
       return Object.assign({}, state, {
-        contacto: (state.productos + 1),
+        contacto: (state.contacto + 1),
       });
     }
     default:

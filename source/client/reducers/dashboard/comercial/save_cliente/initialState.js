@@ -1,16 +1,54 @@
 const initialState = {
   client: [],
-  condicionFacturacion: [
-    'Seleccionè',
-    '50% CO - 50%EN',
+  banco: [
+    'Banco Estado',
+    'Banco Falabella',
+    'Corpbanca',
+    'Santander',
+    'Itau',
+  ],
+  tipoCliente: [
+    'A',
+    'B',
+    'C',
+    'D',
+  ],
+  medioPago: [
+    'Tranferencia',
+    'Cheque',
+    'Vale Vista',
+    'Efectivo',
+    'Transbanc',
+  ],
+  empresa: [
+    'Rocha S.A',
+    'Sillas y Sillas S.A',
+    'Muebles y Diseños S.A',
+    'Transporte jj Limitada',
   ],
   condicionPago: [
-    'Seleccionè',
-    '50% CO - 50%EN',
+    '100% Contado',
+    '50% Contado - 50% Entrega',
+    '50% Contado - 40% Entrega - 10% 30 días',
+    '100% 30 días',
+    '100% 60 días',
+    '100% 90 días',
+    '3 cuotas',
+    '6 cuotas',
+    '12 cuotas',
   ],
-  iva: [
-    'Iva',
-    'Retencion',
+  mercado: [
+    'Privado',
+    'Convenio Marco',
+  ],
+  sucursal: [
+    'Los Conquistadores',
+    'La Dehesa',
+    'Camino Lonquen',
+  ],
+  clienteActivo: [
+    '1',
+    '0',
   ],
   contacto: 1,
   loading: false,

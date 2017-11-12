@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 /* Style */
 import DashBoardStyle from '../../../../../../public/dashboard.scss';
@@ -64,19 +65,23 @@ class SaveClienteComponent extends Component {
               <label htmlFor="tipoCliente">Tipo Cliente</label>
               <select id="tipoCliente" name="tipoCliente">
                 <option value="">Seleccioné</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
+                {
+                  this.props.tipoCliente.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="mercado">Mercado</label>
               <select id="mercado" name="mercado">
-                <option value="">Seleccioné</option>
-                <option value="Privado">Privado</option>
-                <option value="Convenio Marco">Convenio Marco</option>
+                <option value="">Seleccioné</option>              
+                {
+                  this.props.mercado.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
@@ -84,10 +89,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="empresa">Empresa</label>
               <select id="empresa" name="empresa">
                 <option value="">Seleccioné</option>
-                <option value="Rocha S.A">Rocha S.A</option>
-                <option value="Sillas y Sillas S.A">Sillas y Sillas</option>
-                <option value="Muebles y Diseños S.A">Muebles y Diseños S.A</option>
-                <option value="Transporte jj Limitada">Tranporte jj Limitada</option>
+                {
+                  this.props.empresa.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
@@ -95,9 +101,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="sucursal">Sucursal</label>
               <select id="sucursal" name="sucursal">
                 <option value="">Seleccioné</option>
-                <option value="Los Conquistadores">Los conquistadores</option>
-                <option value="La Dehesa">La dehesa</option>
-                <option value="Camino Lonquen">Camino Lonquen</option>
+                {
+                  this.props.sucursal.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
@@ -110,8 +118,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="clienteActivo">Cliente Activo</label>
               <select id="clienteActivo" name="clienteActivo">
                 <option value="">Seleccioné</option>
-                <option value="1">Si</option>
-                <option value="0">No</option>
+                {
+                  this.props.clienteActivo.map((text, i) => {
+                    return <option key={i} value={i}>{text}</option>
+                  })
+                }
               </select>
             </div>
           </div>
@@ -122,32 +133,36 @@ class SaveClienteComponent extends Component {
             <input type="number" id="btnRow" />
             <button> + </button>
           </div>
+          {
+          _.times( this.props.contacto, (i) => {
+            return (
+                <div key={i} className={DashBoardStyle.module_form}>
+                  <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
+                    <h4>Contacto Cliente</h4>
+                  </div>
 
-          <div className={DashBoardStyle.module_form}>
-            <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
-              <h4>Contacto Cliente</h4>
-            </div>
+                  <div className={DashBoardStyle.item_form}>
+                    <label htmlFor="nombreContacto">Nombre Contacto</label>
+                    <input type="text" id="nombreContacto" name="nombreContacto" />
+                  </div>
 
-            <div className={DashBoardStyle.item_form}>
-              <label htmlFor="nombreContacto">Nombre Contacto</label>
-              <input type="text" id="nombreContacto" name="nombreContacto" />
-            </div>
+                  <div className={DashBoardStyle.item_form}>
+                    <label htmlFor="apellidoContacto">Apellido Contacto</label>
+                    <input type="text" id="apellidoContacto" name="apellidoContacto" />
+                  </div>
 
-            <div className={DashBoardStyle.item_form}>
-              <label htmlFor="apellidoContacto">Apellido Contacto</label>
-              <input type="text" id="apellidoContacto" name="apellidoContacto" />
-            </div>
+                  <div className={DashBoardStyle.item_form}>
+                    <label htmlFor="mailContacto">Mail Contacto</label>
+                    <input type="text" id="mailContacto" name="mailContacto" />
+                  </div>
 
-            <div className={DashBoardStyle.item_form}>
-              <label htmlFor="mailContacto">Mail Contacto</label>
-              <input type="text" id="mailContacto" name="mailContacto" />
-            </div>
-
-            <div className={DashBoardStyle.item_form}>
-              <label htmlFor="telefonoContacto">Telefono Contacto</label>
-              <input type="text" id="telefonoContacto" name="telefonoContacto" />
-            </div>
-          </div>
+                  <div className={DashBoardStyle.item_form}>
+                    <label htmlFor="telefonoContacto">Telefono Contacto</label>
+                    <input type="text" id="telefonoContacto" name="telefonoContacto" />
+                  </div>
+                </div>);
+            })
+          }
 
           <div className={DashBoardStyle.module_form}>
             <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
@@ -168,15 +183,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="FormaPago">Forma De Pago</label>
               <select id="FormaPago" name="FormaPago">
                 <option value="Seleccioné">Seleccioné</option>
-                <option value="100% Contado">100% Contado</option>
-                <option value="50% Contado - 50% Entrega">50% Contado - 50% Entrega</option>
-                <option value="50% Contado - 40% Entrega - 10% 30 días">50% Contado - 40% Entrega - 10% 30 días</option>
-                <option value="100% 30 días">100% 30 días</option>
-                <option value="100% 60 días">100% 60 días</option>
-                <option value="100% 90 días">100% 90 días</option>
-                <option value="3 cuotas">3 cuotas</option>
-                <option value="6 cuotas">6 cuotas</option>
-                <option value="12 cuotas">12 cuotas</option>
+                {
+                  this.props.condicionPago.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
@@ -199,11 +210,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="medioPago">Medio de Pago</label>
               <select id="medioPago" name="medioPago">
                 <option value="Seleccioné">Seleccioné</option>
-                <option value="Tranferencia">Tranferencia</option>
-                <option value="Cheque">Cheque</option>
-                <option value="Vale Vista">Vale Vista</option>
-                <option value="Efectivo">Efectivo</option>
-                <option value="Transbanc">Transbanc</option>
+                {
+                  this.props.medioPago.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
 
@@ -216,7 +227,11 @@ class SaveClienteComponent extends Component {
               <label htmlFor="bancoCliente">Banco Cliente</label>
               <select id="bancoCliente" name="bancoCliente">
                 <option value="Seleccioné">Seleccioné</option>
-                <option value="Banco Estado">Banco Estado</option>
+                {
+                  this.props.banco.map((text, i) => {
+                    return <option key={i} value={text}>{text}</option>
+                  })
+                }
               </select>
             </div>
           </div>
