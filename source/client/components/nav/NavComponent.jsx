@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch} from 'react-router-dom';
+
 
 /* Style */
 import NavStyle from '../../../../public/nav.scss';
@@ -27,6 +27,7 @@ const NavComponent = () => (
             <li><a href="test">Listado Toma de Información</a></li>
             <li><a href="test">Listado Cotización</a></li>
             <li><a href="test">Cuadro Proyecto</a></li>
+            <li><span>Cliente</span></li>
           </ul>
         </li>
         <li className={`${NavStyle.nav_items_active}`}>
