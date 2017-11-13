@@ -32,6 +32,16 @@ function saveClient(req, res) {
   });
 }
 
+function getClients(req, res) {
+  Client.find({}, (err, clients) => {
+    if (err) return res.status(500).send({ message: `Error al realizar la petición: ${err}` });
+    if (!clients) return res.status(404).send({ message: 'No existen personas' });
+
+    return res.status(200).send({ clients });
+  });
+}
+
 module.exports = {
   saveClient,
+  getClients,
 };

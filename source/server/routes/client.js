@@ -1,7 +1,13 @@
 import express from 'express';
 import clientCtrl from '../controllers/client';
-const router = express.Router();
 
-router.post('/', clientCtrl.saveClient);
+const client = express.Router();
+const clients = express.Router();
 
-export default router;
+client.post('/', clientCtrl.saveClient);
+clients.get('/', clientCtrl.getClients);
+
+export default {
+  client,
+  clients,
+};
