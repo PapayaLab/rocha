@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 /* Component */
 import Title from './title';
+import { Route, Link } from 'react-router-dom';
 
 /* Style */
 import DashBoardStyle from '../../../../../../public/dashboard.scss';
@@ -67,6 +68,7 @@ class SaveClienteComponent extends Component {
     };
 
     await this.props.actions.saveClient(client);
+    this.props.history.push("/dashboard/listCliente"); /* Podemos enviar el state como segundo parametro */
   }
 
   handleAddContact(event) {

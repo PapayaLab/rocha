@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 /* Style */
 import NavStyle from '../../../../public/nav.scss';
@@ -28,14 +28,15 @@ const NavComponent = () => (
             <li><a href="test">Listado Cotización</a></li>
             <li><a href="test">Cuadro Proyecto</a></li>
             <li><span>Cliente</span></li>
+            <li><Link to="/dashboard/saveCliente">Ingresar Cliente</Link></li>
+            <li><Link to="/dashboard/listCliente">Listado Cliente</Link></li>
           </ul>
         </li>
         <li className={`${NavStyle.nav_items_active}`}>
           <p className={`${NavStyle.icon_dam}`}>Dam</p>
           <ul>
-            <li><a href="test">Ingreso Cotización</a></li>
-            <li><a href="test">Listado Ti Plano</a></li>
-            <li><a href="test">Listado Cotización</a></li>
+            <li><Link to="/dashboard/saveCotizacion">Ingresar Cotización</Link></li>
+            <li><Link to="/dashboard/listCotizacion">Listado Cotización</Link></li>
           </ul>
         </li>
         <li className={`${NavStyle.nav_items_active}`}>

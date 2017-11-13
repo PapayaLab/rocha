@@ -29,13 +29,6 @@ const Dashboard = props => (
     <Route path={`${props.match.path}/ListCotizacion`} component={ListCotizacion} />
     <Route path={`${props.match.path}/SummaryCotizacion`} component={SummaryCotizacion} />
     <Route path={`${props.match.path}/UpdateCotizacion`} component={UpdateCotizacion} />
-    <ul>
-        <li>
-        <Link to={`${props.match.url}/saveCliente`}>
-          Components
-        </Link>
-        </li>
-    </ul>
   </main>
 );
 
