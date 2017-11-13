@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
+
+/* Component */
+import Title from './title';
 
 /* Style */
 import DashBoardStyle from '../../../../../../public/dashboard.scss';
@@ -81,10 +85,8 @@ class SaveClienteComponent extends Component {
   render() {
     return (
       <div className={DashBoardStyle.main}>
-        <form className="offset-lg-3 col-lg-6" onSubmit={this.handleSubmit}>
-          <div className={DashBoardStyle.title}>
-            <h3>Ingreso cliente</h3>
-          </div>
+        <Title />
+        <form onSubmit={this.handleSubmit}>
           <div className={DashBoardStyle.module_form}>
             <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
               <h4>Datos principales Clientes</h4>
@@ -305,5 +307,17 @@ class SaveClienteComponent extends Component {
     );
   }
 }
+
+SaveClienteComponent.propTypes = {
+  contacto: PropTypes.number.isRequired,
+  tipoCliente: PropTypes.arrayOf(PropTypes.string).isRequired,
+  mercado: PropTypes.arrayOf(PropTypes.string).isRequired,
+  empresa: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sucursal: PropTypes.arrayOf(PropTypes.string).isRequired,
+  clienteActivo: PropTypes.arrayOf(PropTypes.string).isRequired,
+  condicionPago: PropTypes.arrayOf(PropTypes.string).isRequired,
+  medioPago: PropTypes.arrayOf(PropTypes.string).isRequired,
+  banco: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default SaveClienteComponent;
