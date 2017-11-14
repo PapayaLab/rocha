@@ -5,10 +5,17 @@ import {
   SAVE_CLIENTE_SUCCESS,
   SAVE_CLIENTE_FAILURE,
   SAVE_CLIENT_INIT,
+  RESET_STATE,
 } from './types';
 import API from './api';
 
 /* Actions Creators */
+export function resetState() {
+  return {
+    type: RESET_STATE,
+  };
+}
+
 export function addContact() {
   return {
     type: ADD_CONTACT,

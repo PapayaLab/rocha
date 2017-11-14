@@ -33,12 +33,25 @@ function saveClient(req, res) {
 }
 
 function getClients(req, res) {
-  Client.find({}, (err, clients) => {
+  const query = {};
+
+  if (req.params.cliente !== 'null') {
+    query.cliente = { $regex: `.*${req.params.cliente}.*` };
+  }
+  if (req.params.director !== 'null') {
+    query.director_proyecto = { $regex: `.*${req.params.director}.*` };
+  }
+  if (req.params.empresa !== 'null') {
+    query.empresa = { $regex: `.*${req.params.empresa}.*` };
+  }
+  const skip = parseInt(req.params.skip, 10);
+  const limit = parseInt(req.params.limit, 10);
+  Client.find(query, (err, clients) => {
     if (err) return res.status(500).send({ message: `Error al realizar la petición: ${err}` });
     if (!clients) return res.status(404).send({ message: 'No existen personas' });
 
     return res.status(200).send({ clients });
-  });
+  }).skip(skip).limit(limit);
 }
 
 module.exports = {

@@ -5,7 +5,7 @@ const client = express.Router();
 const clients = express.Router();
 
 client.post('/', clientCtrl.saveClient);
-clients.get('/', clientCtrl.getClients);
+clients.get('/:cliente/:director/:empresa/:skip/:limit', clientCtrl.getClients);
 
 export default {
   client,

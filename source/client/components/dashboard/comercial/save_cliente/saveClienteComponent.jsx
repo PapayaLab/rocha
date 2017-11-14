@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 /* Component */
 import Title from './title';
-import { Route, Link } from 'react-router-dom';
 
 /* Style */
 import DashBoardStyle from '../../../../../../public/dashboard.scss';
@@ -22,6 +21,9 @@ class SaveClienteComponent extends Component {
     this.nodesContactMail = new Map();
     this.nodesContactTelefono = new Map();
   }
+  componentWillMount() {
+    this.props.actions.resetState();
+  }
   async handleSubmit(event) {
     event.preventDefault();
     const contacto = [];
@@ -30,7 +32,6 @@ class SaveClienteComponent extends Component {
     const contactoApellido = Array.from(this.nodesContactApellido.values());
     const contactoMail = Array.from(this.nodesContactMail.values());
     const contactoTelefono = Array.from(this.nodesContactTelefono.values());
-
     contactoNombre.map((text, i) => {
       obj = {
         nombre: text.value,
@@ -174,7 +175,7 @@ class SaveClienteComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="director">Director Proyecto</label>
-              <input type="number" id="director" name="director" ref={node => this.directorInput = node} />
+              <input type="text" id="director" name="director" ref={node => this.directorInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
@@ -320,6 +321,7 @@ SaveClienteComponent.propTypes = {
   condicionPago: PropTypes.arrayOf(PropTypes.string).isRequired,
   medioPago: PropTypes.arrayOf(PropTypes.string).isRequired,
   banco: PropTypes.arrayOf(PropTypes.string).isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default SaveClienteComponent;

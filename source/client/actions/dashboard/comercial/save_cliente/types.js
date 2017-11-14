@@ -3,6 +3,7 @@
 export const ADD_CONTACT = 'ADD_CONTACT';
 export const REMOVE_CONTACT = 'REMOVE_CONTACT';
 export const CHANGE_CONTACT = 'CHANGE_CONTACT';
+export const RESET_STATE = 'RESET_STATE';
 
 /* (ASYNC) */
 export const SAVE_CLIENTE_INIT = 'SAVE_CLIENTE_INIT';
