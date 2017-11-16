@@ -7,6 +7,7 @@ import DashBoardStyle from '../../../../../../public/dashboard.scss';
 const ClientList = ({
   loading,
   clientes,
+  handleRedirect,
 }) => (
   <div className={DashBoardStyle.module_table_new}>
     { loading && <span>Cargando Datos ...</span> }
@@ -24,11 +25,9 @@ const ClientList = ({
           clientes.map(itemClientes => (
             <tr key={uuid.v4()}>
               <td>
-                <select required>
+                <select onChange={handleRedirect}>
                   <option value="">Seleccione</option>
-                  <option value="1">Descripción</option>
-                  <option value="1">Generar PDF</option>
-                  <option value="1">Resumen</option>
+                  <option value={`/dashboard/saveCliente/${itemClientes.rut_cliente}`}>Descripción</option>
                 </select>
               </td>
               <td>{itemClientes.cliente}</td>
@@ -45,6 +44,7 @@ const ClientList = ({
 ClientList.propTypes = {
   clientes: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired,
+  handleRedirect: PropTypes.func.isRequired,
 };
 
 export default ClientList;

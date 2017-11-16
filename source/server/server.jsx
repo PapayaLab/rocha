@@ -44,7 +44,7 @@ app.get('*', async (req, res, next) => {
 
     const html = renderToStaticMarkup(
       <Html body={body} />);
-    console.log(html)
+
     if (context.url) {
       res.writeHead(301, {
         Location: context.url,

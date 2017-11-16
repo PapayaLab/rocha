@@ -12,10 +12,11 @@ class ListClienteComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      skip: 1,
+      skip: 100,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitMore = this.handleSubmitMore.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   async componentWillMount() {
@@ -24,9 +25,14 @@ class ListClienteComponent extends Component {
       director: null,
       empresa: null,
       skip: 0,
-      limit: 1,
+      limit: 100,
     };
     await this.props.actions.fetchClients(client);
+  }
+
+  handleRedirect(event) {
+    event.preventDefault();
+    this.props.history.push(event.target.value);
   }
 
   async handleSubmit(event) {
@@ -36,7 +42,7 @@ class ListClienteComponent extends Component {
       director: (this.directorInput.value !== '') ? this.directorInput.value : null,
       empresa: (this.empresaInput.value !== '') ? this.empresaInput.value : null,
       skip: 0,
-      limit: 1,
+      limit: 100,
     };
     this.setState({ skip: 1 });
     await this.props.actions.fetchClients(client);
@@ -49,9 +55,9 @@ class ListClienteComponent extends Component {
       director: (this.directorInput.value !== '') ? this.directorInput.value : null,
       empresa: (this.empresaInput.value !== '') ? this.empresaInput.value : null,
       skip: this.state.skip,
-      limit: 1,
+      limit: 100,
     };
-    this.setState({ skip: this.state.skip + 1 });
+    this.setState({ skip: this.state.skip + 100 });
     await this.props.actions.fetchClientsMore(client);
   }
   render() {
@@ -88,9 +94,9 @@ class ListClienteComponent extends Component {
         <ClientList
           loading={this.props.loading}
           clientes={this.props.clientes}
+          handleRedirect={this.handleRedirect}
         />
-
-        <div className={DashBoardStyle.module_view_more}> 
+        <div className={DashBoardStyle.module_view_more}>
           <button onClick={this.handleSubmitMore}> Más </button>
         </div>
       </div>
@@ -98,10 +104,8 @@ class ListClienteComponent extends Component {
   }
 }
 
-
-
 ListClienteComponent.propTypes = {
-  clientes: PropTypes.arrayOf(PropTypes.object),
+  clientes: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
