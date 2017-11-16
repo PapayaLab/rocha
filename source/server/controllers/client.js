@@ -32,6 +32,26 @@ function saveClient(req, res) {
   });
 }
 
+function updateClient(req, res) {
+  const clientId = req.params.clientId;
+  const update = req.body;
+
+  Client.findByIdAndUpdate(clientId, update, (err, clientUpdated) => {
+    if (err) res.status(500).send({ message: `Error al actualizar la persona: ${err}` });
+    res.status(200).send({ person: clientUpdated });
+  });
+}
+
+function getCLient(req, res) {
+  const clientId = req.params.clientId;
+
+  Client.findById(clientId, (err, client) => {
+    if (err) return res.status(500).send({ message: `Error al realizar la petición: ${err}` });
+    if (!client) return res.status(404).send({ message: 'La persona no existe' });
+    res.status(200).send({ client });
+  });
+}
+
 function getClients(req, res) {
   const query = {};
 
@@ -56,5 +76,7 @@ function getClients(req, res) {
 
 module.exports = {
   saveClient,
+  updateClient,
+  getCLient,
   getClients,
 };

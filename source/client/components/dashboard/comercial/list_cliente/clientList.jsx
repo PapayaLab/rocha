@@ -27,7 +27,7 @@ const ClientList = ({
               <td>
                 <select onChange={handleRedirect}>
                   <option value="">Seleccione</option>
-                  <option value={`/dashboard/saveCliente/${itemClientes.rut_cliente}`}>Descripción</option>
+                  <option value={`/dashboard/saveCliente/${itemClientes._id}`}>Descripción</option>
                 </select>
               </td>
               <td>{itemClientes.cliente}</td>
