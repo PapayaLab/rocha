@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 /* Component */
 import Header from '../header/Header';
@@ -10,6 +10,7 @@ import Home from './home/Home';
 import SaveTomaDeInformacion from './comercial/save_toma_de_informacion/saveTomaDeInformacion';
 import SaveCliente from './comercial/save_cliente/saveCliente';
 import ListCliente from './comercial/list_cliente/listCliente';
+import UpdateCliente from './comercial/update_cliente/UpdateCliente';
 
 /* Dam */
 import SaveCotizacion from './dam/save_cotizacion/saveCotizacion';
@@ -24,6 +25,7 @@ const Dashboard = props => (
     <Route exact path={props.match.path} component={Home} />
     <Route path={`${props.match.path}/SaveCliente`} component={SaveCliente} />
     <Route path={`${props.match.path}/ListCliente`} component={ListCliente} />
+    <Route path={`${props.match.path}/UpdateCliente/:clientId`} component={UpdateCliente} />
     <Route path={`${props.match.path}/SaveTomaDeInformacion`} component={SaveTomaDeInformacion} />
     <Route path={`${props.match.path}/SaveCotizacion`} component={SaveCotizacion} />
     <Route path={`${props.match.path}/ListCotizacion`} component={ListCotizacion} />
