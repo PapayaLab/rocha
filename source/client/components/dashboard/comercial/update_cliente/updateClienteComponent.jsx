@@ -25,7 +25,6 @@ class UpdateClienteComponent extends Component {
   }
   componentWillMount() {
     this.props.actions.fetchClient(this.props.match.params.clientId);
-    console.log(this.props.cliente)
   }
   async handleSubmit(event) {
     event.preventDefault();
@@ -36,14 +35,16 @@ class UpdateClienteComponent extends Component {
     const contactoMail = Array.from(this.nodesContactMail.values());
     const contactoTelefono = Array.from(this.nodesContactTelefono.values());
     contactoNombre.map((text, i) => {
-      obj = {
-        nombre: text.value,
-        apellido: contactoApellido[i].value,
-        mail: contactoMail[i].value,
-        telefono: contactoTelefono[i].value,
-      };
-      contacto.push(obj);
-      return contacto;
+      if (text) {
+        obj = {
+          nombre: text.value,
+          apellido: contactoApellido[i].value,
+          mail: contactoMail[i].value,
+          telefono: contactoTelefono[i].value,
+        };
+        contacto.push(obj);
+        return contacto;
+      }
     });
 
     const client = {
@@ -88,7 +89,7 @@ class UpdateClienteComponent extends Component {
     this.props.actions.changeContact(e.target.value);
   }
   changeForm(name, e, subName) {
-    let form = this.props.cliente;
+    const form = this.props.cliente;
 
     if (!subName) {
       form[name] = e.target.value;
@@ -213,62 +214,47 @@ class UpdateClienteComponent extends Component {
               <button onClick={this.handleAddContact}> + </button>
             </div>
             {
-              this.props.cliente.contacto.map((text, i) => {
-                return (
-                  <div key={uuid.v4()} className={DashBoardStyle.module_form} >
-                    <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
-                      <h4>Contacto Cliente</h4>
-                    </div>
-
-                    <div className={DashBoardStyle.item_form}>
-                      <label htmlFor="nombreContacto">Nombre Contacto</label>
-                      <input type="text" value={text.nombre} onChange={(event) => this.changeForm('contacto', event, { num: i, name: 'nombre' })} ref={node => this.nodesContactNombre.set(i, node)} />
-                    </div>
-
-                    <div className={DashBoardStyle.item_form}>
-                      <label htmlFor="apellidoContacto">Apellido Contacto</label>
-                      <input type="text" id="apellidoContacto" name="apellidoContacto" ref={node => this.nodesContactApellido.set(i, node)} />
-                    </div>
-
-                    <div className={DashBoardStyle.item_form}>
-                      <label htmlFor="mailContacto">Mail Contacto</label>
-                      <input type="text" id="mailContacto" name="mailContacto" ref={node => this.nodesContactMail.set(i, node)} />
-                    </div>
-
-                    <div className={DashBoardStyle.item_form}>
-                      <label htmlFor="telefonoContacto">Telefono Contacto</label>
-                      <input type="text" id="telefonoContacto" name="telefonoContacto" ref={node => this.nodesContactTelefono.set(i, node)} />
-                    </div>
-                  </div>);
-              })
-            }
-            {
               _.times(this.props.contacto, (i) => {
-                const num = this.props.cliente.contacto.length + i;
                 return (
-                  <div key={uuid.v4()} className={DashBoardStyle.module_form} >
+                  <div key={i} className={DashBoardStyle.module_form} >
                     <div className={`${DashBoardStyle.item_form} ${DashBoardStyle.title}`}>
                       <h4>Contacto Cliente</h4>
                     </div>
 
                     <div className={DashBoardStyle.item_form}>
                       <label htmlFor="nombreContacto">Nombre Contacto</label>
-                      <input type="text" id="nombreContacto" name="nombreContacto" ref={node => this.nodesContactNombre.set(num, node)} />
+                      { this.props.cliente.contacto[i] ? (
+                        <input type="text" value={this.props.cliente.contacto[i].nombre} onChange={(event) => this.changeForm('contacto', event, { num: i, name: 'nombre' })} ref={node => this.nodesContactNombre.set(i, node)} />
+                      ) : (
+                        <input type="text" data-num={i} data-name="nombre" name="contacto" ref={node => this.nodesContactNombre.set(i, node)} />
+                      )}
                     </div>
 
                     <div className={DashBoardStyle.item_form}>
                       <label htmlFor="apellidoContacto">Apellido Contacto</label>
-                      <input type="text" id="apellidoContacto" name="apellidoContacto" ref={node => this.nodesContactApellido.set(num, node)} />
+                      { this.props.cliente.contacto[i] ? (
+                        <input type="text" value={this.props.cliente.contacto[i].apellido} onChange={(event) => this.changeForm('contacto', event, { num: i, name: 'apellido' })} ref={node => this.nodesContactApellido.set(i, node)} />
+                      ) : (
+                        <input type="text" id="apellidoContacto" name="apellidoContacto" ref={node => this.nodesContactApellido.set(i, node)} />
+                      )}
                     </div>
 
                     <div className={DashBoardStyle.item_form}>
                       <label htmlFor="mailContacto">Mail Contacto</label>
-                      <input type="text" id="mailContacto" name="mailContacto" ref={node => this.nodesContactMail.set(num, node)} />
+                      { this.props.cliente.contacto[i] ? (
+                        <input type="text" value={this.props.cliente.contacto[i].mail} onChange={(event) => this.changeForm('contacto', event, { num: i, name: 'mail' })} ref={node => this.nodesContactMail.set(i, node)} />
+                      ) : (
+                        <input type="text" id="mailContacto" name="mailContacto" ref={node => this.nodesContactMail.set(i, node)} />
+                      )}
                     </div>
 
                     <div className={DashBoardStyle.item_form}>
                       <label htmlFor="telefonoContacto">Telefono Contacto</label>
-                      <input type="text" id="telefonoContacto" name="telefonoContacto" ref={node => this.nodesContactTelefono.set(num, node)} />
+                      { this.props.cliente.contacto[i] ? (
+                        <input type="text" value={this.props.cliente.contacto[i].telefono} onChange={(event) => this.changeForm('contacto', event, { num: i, name: 'telefono' })} ref={node => this.nodesContactTelefono.set(i, node)} />
+                      ) : (
+                        <input type="text" id="telefonoContacto" name="telefonoContacto" ref={node => this.nodesContactTelefono.set(i, node)} />
+                      )}
                     </div>
                   </div>);
               })

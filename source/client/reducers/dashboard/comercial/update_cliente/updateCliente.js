@@ -18,6 +18,7 @@ export default function updateClientReducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: true,
         error: null,
+        cliente: false,
       });
     case FETCH_CLIENT_SUCCESS:
       return Object.assign({}, state, {
