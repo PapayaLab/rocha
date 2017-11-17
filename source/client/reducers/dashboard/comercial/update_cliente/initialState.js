@@ -1,5 +1,5 @@
 const initialState = {
-  client: [],
+  cliente: false,
   banco: [
     'Banco Estado',
     'Banco Falabella',

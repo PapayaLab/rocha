@@ -15,7 +15,7 @@ function mapStateToProps(state) {
     condicionPago: state.reducer.updateCliente.condicionPago,
     medioPago: state.reducer.updateCliente.medioPago,
     banco: state.reducer.updateCliente.banco,
-
+    cliente: state.reducer.updateCliente.cliente,
   };
 }
 

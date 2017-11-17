@@ -6,13 +6,33 @@ import {
   ADD_CONTACT,
   REMOVE_CONTACT,
   CHANGE_CONTACT,
-  RESET_STATE,
+  CHANGE_FORM,
+  FETCH_CLIENT_INIT,
+  FETCH_CLIENT_SUCCESS,
+  FETCH_CLIENT_FAILURE,
 } from '../../../../actions/dashboard/comercial/update_cliente/types';
 
 export default function updateClientReducer(state = initialState, action) {
   switch (action.type) {
+    case FETCH_CLIENT_INIT:
+      return Object.assign({}, state, {
+        loading: true,
+        error: null,
+      });
+    case FETCH_CLIENT_SUCCESS:
+      return Object.assign({}, state, {
+        cliente: action.payload,
+        error: null,
+        loading: false,
+        contacto: action.payload.contacto.length,
+      });
+    case FETCH_CLIENT_FAILURE:
+      return Object.assign({}, state, {
+        cliente: [],
+        error: action.payload,
+        loading: false,
+      });
     case UPDATE_CLIENT_INIT:
-    console.log("caca");
       return Object.assign({}, state, {
         loading: true,
         error: null,
@@ -42,9 +62,9 @@ export default function updateClientReducer(state = initialState, action) {
         contacto: (action.payload > 0) ? action.payload : 1,
       });
     }
-    case RESET_STATE: {
+    case CHANGE_FORM: {
       return Object.assign({}, state, {
-        contacto: 1,
+        cliente: JSON.parse(action.payload),
       });
     }
     default:

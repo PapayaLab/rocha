@@ -16,6 +16,11 @@ const API = {
       const data = await response.json();
       return data;
     },
+    async getSingle(id) {
+      const response = await fetch(`${baseURL}/api/client/${id}`);
+      const data = await response.json();
+      return data;
+    },
   },
 };
 export default API;
