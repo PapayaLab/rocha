@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import uuid from 'uuid';
 
 /* Component */
 import Title from './title';
@@ -123,31 +122,31 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="razon">Razón Social</label>
-                <input type="text" id="razon" name="razon" ref={node => this.razonInput = node} />
+                <input type="text" value={this.props.cliente.razon_social} onChange={(event) => this.changeForm('razon_social', event)} ref={node => this.razonInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="giro">Giro</label>
-                <input type="text" id="giro" name="giro" ref={node => this.giroInput = node} />
+                <input type="text" value={this.props.cliente.giro} onChange={(event) => this.changeForm('giro', event)} ref={node => this.giroInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="rubro">Rubro</label>
-                <input type="text" id="rubro" name="rubro" ref={node => this.rubroInput = node} />
+                <input type="text" value={this.props.cliente.rubro} onChange={(event) => this.changeForm('rubro', event)} ref={node => this.rubroInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="numeroEmpleados">Número Empleados</label>
-                <input type="number" id="numeroEmpleados" name="numeroEmpleados" ref={node => this.empleadoInput = node} />
+                <input type="number" value={(this.props.cliente.numero_empleado) ? this.props.cliente.numero_empleado : 0} onChange={(event) => this.changeForm('numero_empleado', event)} ref={node => this.empleadoInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="tipoCliente">Tipo Cliente</label>
-                <select id="tipoCliente" name="tipoCliente" ref={node => this.tipoClienteInput = node}>
+                <select value={this.props.cliente.tipo_cliente} onChange={(event) => this.changeForm('tipo_cliente', event)} ref={node => this.tipoClienteInput = node}>
                   <option value="">Seleccioné</option>
                   {
-                    this.props.tipoCliente.map((text) => {
-                      return <option key={uuid.v4()} value={text}>{text}</option>;
+                    this.props.tipoCliente.map((text, i) => {
+                      return <option key={i} value={text}>{text}</option>;
                     })
                   }
                 </select>
@@ -158,8 +157,8 @@ class UpdateClienteComponent extends Component {
                 <select value={this.props.cliente.mercado} onChange={(event) => this.changeForm('mercado', event)} ref={node => this.mercadoInput = node}>
                   <option value="">Seleccioné</option>              
                   {
-                    this.props.mercado.map((text) => {
-                      return <option key={uuid.v4()} value={text}>{text}</option>;
+                    this.props.mercado.map((text, i) => {
+                      return <option key={i} value={text}>{text}</option>;
                     })
                   }
                 </select>
@@ -167,7 +166,7 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="empresa">Empresa</label>
-                <select id="empresa" name="empresa" ref={node => this.empresaInput = node}>
+                <select value={this.props.cliente.empresa} onChange={(event) => this.changeForm('empresa', event)} ref={node => this.empresaInput = node}>
                   <option value="">Seleccioné</option>
                   {
                     this.props.empresa.map((text, i) => {
@@ -179,7 +178,7 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="sucursal">Sucursal</label>
-                <select id="sucursal" name="sucursal" ref={node => this.sucursalInput = node}>
+                <select value={this.props.cliente.sucursal} onChange={(event) => this.changeForm('sucursal', event)} ref={node => this.sucursalInput = node}>
                   <option value="">Seleccioné</option>
                   {
                     this.props.sucursal.map((text, i) => {
@@ -191,12 +190,12 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="director">Director Proyecto</label>
-                <input type="text" id="director" name="director" ref={node => this.directorInput = node} />
+                <input type="text" value={this.props.cliente.director_proyecto} onChange={(event) => this.changeForm('director_proyecto', event)} ref={node => this.directorInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="clienteActivo">Cliente Activo</label>
-                <select id="clienteActivo" name="clienteActivo" ref={node => this.activoInput = node}>
+                <select value={this.props.cliente.cliente_activo} onChange={(event) => this.changeForm('cliente_activo', event)} ref={node => this.activoInput = node}>
                   <option value="">Seleccioné</option>
                   {
                     this.props.clienteActivo.map((text, i) => {
@@ -267,17 +266,17 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="facturacion">Facturación electronica</label>
-                <input type="text" id="facturacion" name="facturacion" ref={node => this.facturacionInput = node} />
+                <input type="text" value={this.props.cliente.facturacion_electronica} onChange={(event) => this.changeForm('facturacion_electronica', event)} ref={node => this.facturacionInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="correoFacturacion">Mail Facturación</label>
-                <input type="text" id="correoFacturacion" name="correoFacturacion" ref={node => this.mailFacturacionInput = node} />
+                <input type="text" value={this.props.cliente.mail_facturacion} onChange={(event) => this.changeForm('mail_facturacion', event)} ref={node => this.mailFacturacionInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="FormaPago">Forma De Pago</label>
-                <select id="FormaPago" name="FormaPago" ref={node => this.formaPagoInput = node}>
+                <select value={this.props.cliente.forma_pago} onChange={(event) => this.changeForm('forma_pago', event)} ref={node => this.formaPagoInput = node}>
                   <option value="Seleccioné">Seleccioné</option>
                   {
                     this.props.condicionPago.map((text, i) => {
@@ -289,22 +288,22 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="contactoProveedores">Contacto Proveedores</label>
-                <input type="text" id="contactoProveedores" name="contactoProveedores" ref={node => this.contactoProveedoresInput = node} />
+                <input type="text" value={this.props.cliente.contacto_proveedores} onChange={(event) => this.changeForm('contacto_proveedores', event)} ref={node => this.contactoProveedoresInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="telefonoProveedores">Telefono Proveedores</label>
-                <input type="text" id="telefonoProveedores" name="telefonoProveedores" ref={node => this.telefonoProveedoresInput = node} />
+                <input type="text" value={this.props.cliente.telefono_proveedores} onChange={(event) => this.changeForm('telefono_proveedores', event)} ref={node => this.telefonoProveedoresInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="mailProveedores">Mail Proveedores</label>
-                <input type="text" id="mailProveedores" name="mailProveedores" ref={node => this.mailProveedoresInput = node} />
+                <input type="text" value={this.props.cliente.mail_proveedores} onChange={(event) => this.changeForm('mail_proveedores', event)} ref={node => this.mailProveedoresInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="medioPago">Medio de Pago</label>
-                <select id="medioPago" name="medioPago" ref={node => this.medioPagoInput = node} >
+                <select value={this.props.cliente.medio_pago} onChange={(event) => this.changeForm('medio_pago', event)} ref={node => this.medioPagoInput = node} >
                   <option value="Seleccioné">Seleccioné</option>
                   {
                     this.props.medioPago.map((text, i) => {
@@ -316,12 +315,12 @@ class UpdateClienteComponent extends Component {
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="direccionPago">Dirección Pago</label>
-                <input type="text" id="direccionPago" name="direccionPago" ref={node => this.direccionPagoInput = node} />
+                <input type="text" value={this.props.cliente.direccion_pago} onChange={(event) => this.changeForm('direccion_pago', event)} ref={node => this.direccionPagoInput = node} />
               </div>
 
               <div className={DashBoardStyle.item_form}>
                 <label htmlFor="bancoCliente">Banco Cliente</label>
-                <select id="bancoCliente" name="bancoCliente" ref={node => this.bancoInput = node} >
+                <select value={this.props.cliente.banco_cliente} onChange={(event) => this.changeForm('banco_cliente', event)} ref={node => this.bancoInput = node} >
                   <option value="Seleccioné">Seleccioné</option>
                   {
                     this.props.banco.map((text, i) => {
