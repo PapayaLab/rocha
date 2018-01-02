@@ -42,8 +42,8 @@ class UpdateClienteComponent extends Component {
           telefono: contactoTelefono[i].value,
         };
         contacto.push(obj);
-        return contacto;
       }
+      return contacto;
     });
 
     const client = {

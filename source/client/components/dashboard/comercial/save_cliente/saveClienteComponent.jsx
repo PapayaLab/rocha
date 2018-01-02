@@ -33,13 +33,15 @@ class SaveClienteComponent extends Component {
     const contactoMail = Array.from(this.nodesContactMail.values());
     const contactoTelefono = Array.from(this.nodesContactTelefono.values());
     contactoNombre.map((text, i) => {
-      obj = {
-        nombre: text.value,
-        apellido: contactoApellido[i].value,
-        mail: contactoMail[i].value,
-        telefono: contactoTelefono[i].value,
-      };
-      contacto.push(obj);
+      if (text) {
+        obj = {
+          nombre: text.value,
+          apellido: contactoApellido[i].value,
+          mail: contactoMail[i].value,
+          telefono: contactoTelefono[i].value,
+        };
+        contacto.push(obj);
+      }
       return contacto;
     });
 
