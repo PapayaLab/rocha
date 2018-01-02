@@ -22,11 +22,12 @@ const NavComponent = () => (
         <li className={`${NavStyle.nav_items_active}`}>
           <p className={NavStyle.icon_comercial}>Comercial</p>
           <ul>
-            <li><a href="test">Ingreso Toma de información</a></li>
             <li><a href="test">Mueble Especial</a></li>
-            <li><a href="test">Listado Toma de Información</a></li>
             <li><a href="test">Listado Cotización</a></li>
             <li><a href="test">Cuadro Proyecto</a></li>
+            <li><span>Toma de información</span></li>
+            <li><Link to="/dashboard/saveTomaDeInformacion">Ingreso Toma de información</Link></li>
+            <li><a href="test">Listado Toma de Información</a></li>
             <li><span>Cliente</span></li>
             <li><Link to="/dashboard/saveCliente">Ingresar Cliente</Link></li>
             <li><Link to="/dashboard/listCliente">Listado Cliente</Link></li>

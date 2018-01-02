@@ -1,14 +1,24 @@
-import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+//import * as clientActions from '../../../../client/actions/dashboard/comercial/save_cliente/saveClienteActions';
 import SaveTomaDeInformacionComponent from '../../../../client/components/dashboard/comercial/save_toma_de_informacion/SaveTomaDeInformacionComponent.jsx';
 
-class SaveTomaDeInformacion extends Component {
+function mapStateToProps(state) {
+  return {
 
-  render() {
-    return (
-      <SaveTomaDeInformacionComponent />
-    );
-  }
+  };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
 
-export default SaveTomaDeInformacion;
+  };
+}
+
+const saveCliente = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SaveTomaDeInformacionComponent);
+
+export default saveCliente;

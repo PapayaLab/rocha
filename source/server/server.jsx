@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 /* Api Express */
 import users from './routes/users';
 import clientRoute from './routes/client';
-
+import tiRoute from './routes/ti';
 
 /* Components */
 import store from '../client/store/store';
@@ -28,8 +28,11 @@ app.use(bodyParser.json());
 
 /* Middlewares */
 app.use('/api/users', users);
+
 app.use('/api/client', clientRoute.client);
 app.use('/api/clients', clientRoute.clients);
+
+app.use('/api/ti', tiRoute.ti);
 
 app.get('*', async (req, res, next) => {
   try {
