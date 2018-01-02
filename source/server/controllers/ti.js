@@ -4,7 +4,7 @@ function saveTi(req, res) {
   const ti = new Ti();
   ti.numero_ti = req.body.numero_ti;
   ti.id_client = req.body.id_client;
-  ti.fecha_realizacion = req.body.numero;
+  ti.fecha_realizacion = req.body.fecha_realizacion;
   ti.puestos = req.body.puestos;
   ti.proyecto = req.body.proyecto;
   ti.direccion_factura = req.body.direccion_factura;

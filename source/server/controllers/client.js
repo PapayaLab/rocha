@@ -56,14 +56,15 @@ function getClients(req, res) {
   const query = {};
 
   if (req.params.cliente !== 'null') {
-    query.cliente = { $regex: `.*${req.params.cliente}.*` };
+    query.cliente = { $regex: new RegExp(req.params.cliente, 'i') };
   }
   if (req.params.director !== 'null') {
-    query.director_proyecto = { $regex: `.*${req.params.director}.*` };
+    query.director_proyecto = { $regex: new RegExp(req.params.director, 'i') };
   }
   if (req.params.empresa !== 'null') {
     query.empresa = { $regex: `.*${req.params.empresa}.*` };
   }
+  console.log(query)
   const skip = parseInt(req.params.skip, 10);
   const limit = parseInt(req.params.limit, 10);
   Client.find(query, (err, clients) => {

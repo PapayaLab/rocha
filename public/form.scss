@@ -23,6 +23,14 @@
         margin-bottom: .3em;
         color: $color_corporativo_dark;
     }
+    .autocomplete{
+        background: $blanco; 
+        padding : .3em;
+        &.autocomplete_color{
+            background: #55AACD;
+            color: $blanco;
+        } 
+    }
     select{
         position:relative;
         background-image: url(./image/down-arrow.png);
@@ -30,7 +38,7 @@
         background-size: 15px 15px;
         background-position: 98% center;
     }
-    input[type="text"],select, input[type="number"]{
+    input[type="text"],select, input[type="number"], input[type="date"]{
         border:solid 1px $gris;
         padding: .5em .3em;
         width: 100%;

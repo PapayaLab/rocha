@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const TiSchema = Schema({
   numero_ti: String,
-  id_cliente: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
+  id_client: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
   fecha_realizacion: Date,
   puestos: Number,
   proyecto: String,
