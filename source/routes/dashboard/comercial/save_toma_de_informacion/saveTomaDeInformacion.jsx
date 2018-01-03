@@ -4,18 +4,18 @@ import { bindActionCreators } from 'redux';
 import * as tomaDeInformacioActions from '../../../../client/actions/dashboard/comercial/save_toma_de_informacion/saveTomaDeInformacionActions';
 import SaveTomaDeInformacionComponent from '../../../../client/components/dashboard/comercial/save_toma_de_informacion/SaveTomaDeInformacionComponent.jsx';
 
-import * as clientActions from '../../../../client/actions/dashboard/comercial/list_cliente/listClienteActions';
+import * as autocompleteActions from '../../../../client/actions/dashboard/autocomplete/autocompleteActions';
 
 function mapStateToProps(state) {
   return {
-    clientes: state.reducer.listCliente.clientes,
+    clientes: state.reducer.autocomplete.clientes,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(tomaDeInformacioActions, dispatch),
-    actionsCliente: bindActionCreators(clientActions, dispatch),
+    actionsAutocomplete: bindActionCreators(autocompleteActions, dispatch),
   };
 }
 

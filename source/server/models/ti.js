@@ -12,6 +12,7 @@ const TiSchema = Schema({
   direccion_factura: String,
   direccion_entrega: String,
   director_proyecto: String,
+  fecha_reunion: Date,
 });
 
 module.exports = mongoose.model('Ti', TiSchema);

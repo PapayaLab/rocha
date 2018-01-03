@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import users from './routes/users';
 import clientRoute from './routes/client';
 import tiRoute from './routes/ti';
+import autocompleteRoute from './routes/autocomplete';
 
 /* Components */
 import store from '../client/store/store';
@@ -33,6 +34,8 @@ app.use('/api/client', clientRoute.client);
 app.use('/api/clients', clientRoute.clients);
 
 app.use('/api/ti', tiRoute.ti);
+
+app.use('/api/autocomplete/clients', autocompleteRoute.autocompleteClient);
 
 app.get('*', async (req, res, next) => {
   try {

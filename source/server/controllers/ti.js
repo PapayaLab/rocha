@@ -10,6 +10,7 @@ function saveTi(req, res) {
   ti.direccion_factura = req.body.direccion_factura;
   ti.direccion_entrega = req.body.direccion_entrega;
   ti.director_proyecto = req.body.director_proyecto;
+  ti.fecha_reunion = req.body.fecha_reunion;
 
   ti.save().then((tiStored) => {
     res.status(200).send({ ti: tiStored });

@@ -42,7 +42,7 @@ class ListClienteComponent extends Component {
       director: (this.directorInput.value !== '') ? this.directorInput.value : null,
       empresa: (this.empresaInput.value !== '') ? this.empresaInput.value : null,
       skip: 0,
-      limit: 100,
+      limit: 10,
     };
     this.setState({ skip: 1 });
     await this.props.actions.fetchClients(client);

@@ -6,6 +6,7 @@ import saveTomaDeInformacion from './dashboard/comercial/save_toma_de_informacio
 import saveCliente from './dashboard/comercial/save_cliente/saveCliente';
 import listCliente from './dashboard/comercial/list_cliente/listCliente';
 import updateCliente from './dashboard/comercial/update_cliente/updateCliente';
+import autocomplete from './dashboard/autocomplete/autocomplete';
 
 const reducer = combineReducers({
   singUp,
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   saveCliente,
   listCliente,
   updateCliente,
+  autocomplete,
 });
 
 export default reducer;

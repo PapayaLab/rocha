@@ -14,6 +14,8 @@ class SaveTomaDeInformacionComponent extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.autocompleteClient = this.autocompleteClient.bind(this);
+    this.handleContact = this.handleContact.bind(this);
+    this.selectContact = this.selectContact.bind(this);
 
     this.state = { value: '' };
   }
@@ -22,37 +24,71 @@ class SaveTomaDeInformacionComponent extends Component {
   }
   async handleSubmit(event) {
     event.preventDefault();
-
     const ti = {
-      numero_ti: this.numeroInput.vale,
+      numero_ti: this.numeroInput.value,
+      id_client: this.idClienteInput.value,
       fecha_realizacion: this.fechaRInput.value,
       puestos: this.puestosInput.value,
       proyecto: this.proyectoInput.value,
       direccion_factura: this.direccionFacturaInput.value,
       direccion_entrega: this.direccionEntregaInput.value,
       director_proyecto: this.directorProyectoInput.value,
+      fecha_reunion: this.fechaReunionInput.value,
     };
 
     await this.props.actions.saveTi(ti);
     this.props.history.push("/dashboard/listCliente"); /* Podemos enviar el state como segundo parametro */
   }
-
   async autocompleteClient(value) {
     event.preventDefault();
     const client = {
       cliente: value,
-      director: null,
-      empresa: null,
       skip: 0,
       limit: 100,
     };
-    await setTimeout(()=>{
-       this.props.actionsCliente.fetchClients(client);
-    },300); 
+    this.props.actionsAutocomplete.fetchClients(client);
+  }
+  handleContact(item) {
+
+    /* Clear Input */
+    document.getElementById('nombreContacto').value = '';
+    document.getElementById('apellidoContacto').value = '';
+    document.getElementById('mailContacto').value = '';
+    document.getElementById('telefonoContacto').value = '';
+
+    document.getElementById('rutCliente').value = item.rut_cliente;
+    document.getElementById('idCliente').value = item._id;
+    /* Selected contact */
+    const selectContact = document.getElementById('contactoCliente');
+    const count = selectContact.length;
+    let i;
+
+    for (i = 1; i < count; i += 1) {
+      selectContact.removeChild(selectContact.options[selectContact.length - 1]);
+    }
+
+    item.contacto.forEach((contact) => {
+      const option = document.createElement('option');
+      option.setAttribute('data-nombre', contact.nombre);
+      option.setAttribute('data-apellido', contact.apellido);
+      option.setAttribute('data-mail', contact.mail);
+      option.setAttribute('data-telefono', contact.telefono);
+      option.text = `${contact.nombre} ${contact.apellido}`;
+      selectContact.add(option);
+    });
+  }
+
+  selectContact(event) {
+    const select = event.currentTarget.selectedIndex;
+    const option = event.currentTarget.options;
+
+    document.getElementById('nombreContacto').value = option[select].dataset.nombre;
+    document.getElementById('apellidoContacto').value = option[select].dataset.apellido;
+    document.getElementById('mailContacto').value = option[select].dataset.mail;
+    document.getElementById('telefonoContacto').value = option[select].dataset.telefono;
   }
 
   render() {
-    console.log(this.props.clientes)
     return (
       <div className={DashBoardStyle.main}>
         <Title />
@@ -74,7 +110,7 @@ class SaveTomaDeInformacionComponent extends Component {
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="fechaR">Fecha Realización</label>
-              <input type="date" className={DashBoardStyle.module_form_date}  required id="fechaR" ref={node => this.fechaRInput = node} />
+              <input type="date" className={DashBoardStyle.module_form_date} required id="fechaR" ref={node => this.fechaRInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
@@ -96,6 +132,11 @@ class SaveTomaDeInformacionComponent extends Component {
               <label htmlFor="directorProyecto">Director proyecto</label>
               <input type="text" required id="directorProyecto" ref={node => this.directorProyectoInput = node} />
             </div>
+
+            <div className={DashBoardStyle.item_form}>
+              <label htmlFor="fechaReunion">Fecha Reunión</label>
+              <input type="date" className={DashBoardStyle.module_form_date} id="fechaReunion" ref={node => this.fechaReunionInput = node} />
+            </div>
           </div>
 
           <div className={DashBoardStyle.module_form}>
@@ -114,8 +155,9 @@ class SaveTomaDeInformacionComponent extends Component {
                 onChange={(event, value) => {
                   this.autocompleteClient(value);
                   this.setState({ value });
-                }}    
-                onSelect={ (value) => {
+                }}
+                onSelect={(value, item) => {
+                  this.handleContact(item);
                   this.setState({ value });
                 }}
                 renderItem={(item, isHighlighted) =>
@@ -127,13 +169,14 @@ class SaveTomaDeInformacionComponent extends Component {
             </div>
 
             <div className={DashBoardStyle.item_form}>
-              <label htmlFor="rutcliente">Rut cliente</label>
+              <label htmlFor="rutCliente">Rut cliente</label>
               <input type="text" required id="rutCliente" ref={node => this.rutClienteInput = node} />
+              <input type="hidden" id="idCliente" ref={node => this.idClienteInput = node} />
             </div>
 
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="contactoCliente">Contacto Cliente</label>
-              <select id="contactoCliente" name="contactoCliente" ref={node => this.contactoClienteInput = node}>
+              <select onChange={this.selectContact} id="contactoCliente" name="contactoCliente" ref={node => this.contactoClienteInput = node}>
                 <option value="">Seleccioné</option>
               </select>
             </div>
@@ -141,6 +184,21 @@ class SaveTomaDeInformacionComponent extends Component {
             <div className={DashBoardStyle.item_form}>
               <label htmlFor="nombreContacto">Nombre</label>
               <input type="text" required id="nombreContacto" ref={node => this.nombreContactoInput = node} />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+              <label htmlFor="apellidoContacto">Apellido</label>
+              <input type="text" required id="apellidoContacto" ref={node => this.apellidoContactoInput = node} />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+              <label htmlFor="mailContacto">Email</label>
+              <input type="text" required id="mailContacto" ref={node => this.mailContactoInput = node} />
+            </div>
+
+            <div className={DashBoardStyle.item_form}>
+              <label htmlFor="telefonoContacto">Telefono</label>
+              <input type="text" required id="telefonoContacto" ref={node => this.telefonoContactoInput = node} />
             </div>
 
           </div>
@@ -158,6 +216,7 @@ class SaveTomaDeInformacionComponent extends Component {
 
 SaveTomaDeInformacionComponent.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
+  actionsAutocomplete: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default SaveTomaDeInformacionComponent;
