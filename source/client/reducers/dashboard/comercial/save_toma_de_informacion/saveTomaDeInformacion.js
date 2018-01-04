@@ -22,6 +22,7 @@ export default function saveTiReducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         error: null,
+        send: action.payload,
       });
     case RESET_STATE: {
       return Object.assign({}, state, {

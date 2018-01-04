@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
 const TiSchema = Schema({
-  numero_ti: String,
+  numero_ti: { type: String, unique: true },
   id_client: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
   fecha_realizacion: Date,
   puestos: Number,

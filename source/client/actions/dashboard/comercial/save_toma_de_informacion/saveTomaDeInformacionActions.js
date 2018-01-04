@@ -13,9 +13,10 @@ export function resetState() {
   };
 }
 
-function saveTiSuccess() {
+function saveTiSuccess(data) {
   return {
     type: SAVE_TI_SUCCESS,
+    payload: data,
   };
 }
 
@@ -38,10 +39,9 @@ function saveTiInit() {
 export function saveTi(ti) {
   return async (dispatch) => {
     dispatch(saveTiInit());
-
     try {
-      await API.ti.save(ti);
-      return dispatch(saveTiSuccess());
+      const data = await API.ti.save(ti);
+      return dispatch(saveTiSuccess(data));
     } catch (error) {
       return dispatch(saveTiFailure(error));
     }

@@ -9,6 +9,7 @@ import * as autocompleteActions from '../../../../client/actions/dashboard/autoc
 function mapStateToProps(state) {
   return {
     clientes: state.reducer.autocomplete.clientes,
+    send: state.reducer.saveTomaDeInformacion.send,
   };
 }
 

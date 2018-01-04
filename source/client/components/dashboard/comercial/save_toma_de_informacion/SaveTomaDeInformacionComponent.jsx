@@ -37,7 +37,9 @@ class SaveTomaDeInformacionComponent extends Component {
     };
 
     await this.props.actions.saveTi(ti);
-    this.props.history.push("/dashboard/listCliente"); /* Podemos enviar el state como segundo parametro */
+    if(this.props.send.state){
+      this.props.history.push("/dashboard/listCliente"); /* Podemos enviar el state como segundo parametro */
+    }
   }
   async autocompleteClient(value) {
     event.preventDefault();
@@ -89,6 +91,7 @@ class SaveTomaDeInformacionComponent extends Component {
   }
 
   render() {
+    console.log(this.props.send)
     return (
       <div className={DashBoardStyle.main}>
         <Title />
@@ -215,6 +218,7 @@ class SaveTomaDeInformacionComponent extends Component {
 }
 
 SaveTomaDeInformacionComponent.propTypes = {
+  send: PropTypes.object,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
   actionsAutocomplete: PropTypes.objectOf(PropTypes.func).isRequired,
 };

@@ -13,9 +13,9 @@ function saveTi(req, res) {
   ti.fecha_reunion = req.body.fecha_reunion;
 
   ti.save().then((tiStored) => {
-    res.status(200).send({ ti: tiStored });
+    res.status(200).send({ ti: tiStored, message: 'Ingresado correctamente', state: true });
   }, (err) => {
-    res.status(500).send({ message: `Error al salvar en la base de datos: ${err} ` });
+    res.status(200).send({ ti: null, message: 'Este número ya se encuentra en la BD', state: false });
   });
 }
 
